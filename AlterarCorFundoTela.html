@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body id=tudo>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var btn = document.getElementById("botao1");
+            btn.addEventListener("click", minhafunc);
+            
+            var btn = document.getElementById("botao2");
+            btn.addEventListener("click", minhafunc2);
+        }
+
+        function minhafunc() {
+            tudo.style.backgroundColor = "black";
+            
+        }
+        
+        function minhafunc2(){
+            
+            tudo.style.backgroundColor = "white";
+        }
+
+
+    
+
+    </script>
+        <input type="button" id="botao1" value="Preto" />
+
+        <input type="button" id="botao2" value="Branco" />
+</body>

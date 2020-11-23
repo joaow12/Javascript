@@ -1,0 +1,95 @@
+<html>
+<head>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        var frutas = [];
+
+        window.onload = function () {
+            var btn = document.getElementById("botao");
+            btn.addEventListener("click", minhafunc);
+        }
+
+        function minhafunc() {
+            var campoTexto1 = document.getElementById("campo1").value;
+            var campoTexto2 = document.getElementById("campo2").value;
+            var campoTexto3 = document.getElementById("campo3").value;
+            
+            var num1 = parseInt(campoTexto1);
+            var num2 = parseInt(campoTexto2);
+            var num3 = parseInt(campoTexto3);
+            
+            campo1.style.backgroundColor = "FFF";
+            campo2.style.backgroundColor = "FFF";
+            campo3.style.backgroundColor = "FFF";
+            
+            if(num1>num2 && num1>num3 && num2>num3){
+                document.getElementById("resultado").innerHTML = "O maior número é o primeiro campo: " + num1;
+                campo1.style.backgroundColor = "red";
+                campo3.style.backgroundColor = "green";
+            }
+            else{
+                if(num2>num1 && num2>num3 && num3>num1){
+                    document.getElementById("resultado").innerHTML = "O maior número é o segundo campo: " + num2;
+                    campo2.style.backgroundColor = "red";
+                    campo1.style.backgroundColor = "green";
+                }
+                else{
+                    if(num3>num1 && num3>num2 && num1>num2){
+                        document.getElementById("resultado").innerHTML = "O maior número é o terceiro campo: " + num3;
+                        campo3.style.backgroundColor = "red";
+                        campo2.style.backgroundColor = "green";
+                    }
+                    else{
+                        if(num3>num1 && num3>num2 && num2>num1){
+                            document.getElementById("resultado").innerHTML = "O maior número é o terceiro campo: " + num3;
+                        campo3.style.backgroundColor = "red";
+                        campo1.style.backgroundColor = "green";
+                            
+                        }
+                        else{
+                            if(num2>num1 && num2>num3 && num1>num3){
+                                document.getElementById("resultado").innerHTML = "O maior número é o terceiro campo: " + num3;
+                        campo2.style.backgroundColor = "red";
+                        campo3.style.backgroundColor = "green";
+                            }
+                            else{
+                                if(num1>num2 && num1>num3 && num3>num2){
+                                    document.getElementById("resultado").innerHTML = "O maior número é o terceiro campo: " + num3;
+                        campo1.style.backgroundColor = "red";
+                        campo2.style.backgroundColor = "green";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+           
+        }
+
+
+    
+
+    </script>
+    <p>Digite o primeiro valor: </p>
+    <input type="text" id="campo1" />
+    <br />
+    <br />
+    <p>Digite o segundo valor: </p>
+    <input type="text" id="campo2" />
+    <br />
+    <br />
+    <p>Digite o terceiro valor: </p>
+    <input type="text" id="campo3" />
+    <br />
+    <br />
+    <input type="button" id="botao" value="Go!" />
+
+    <br />
+    <br />
+    <p id="resultado"></p>
+
+</body>
+</html>

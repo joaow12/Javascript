@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  
+  <style>
+    
+    .tabela {
+    	background-color: #BFEFFF; 
+        width: 500px;
+        border: 2px solid #CCC;
+    }
+    
+    .botao {
+    	width: 150px;
+        background-color: #111111;
+        color: white;
+    }
+  
+  </style>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var nomeLista = [];
+        var pesoLista = [];
+        var alturaLista = [];
+        var imcLista = [];
+        
+        function adicionarFilme(){
+            var x = document.getElementById("nome");
+            var w = document.getElementById("peso");
+            var y = document.getElementById("altura");
+            var z;
+            if(x.value == ""){
+                alert("Digite um nome");
+                x.focus();
+                x.style.backgroundColor = "red";
+                return;
+            }
+            else{
+                x.style.backgroundColor = "#FFF";
+            }
+            if(w.value == ""){
+                alert("Digite um peso");
+                w.focus();
+                w.style.backgroundColor = "red";
+                return;
+            }
+            else{
+                w.style.backgroundColor = "#FFF";
+            }
+            if(y.value == ""){
+                alert("Digite uma altura");
+                y.focus();
+                y.style.backgroundColor = "red";
+                return;
+            }
+            else{
+                y.style.backgroundColor = "#FFF";
+            }
+              
+            
+            
+            z = parseFloat(w.value) / (parseFloat(y.value) *parseFloat(y.value) );
+                
+                nomeLista.push(x.value);
+                pesoLista.push(w.value);
+                alturaLista.push(y.value);
+                imcLista.push(z);
+            
+            
+            x.value = "";
+            w.value = "";
+            y.value = "";
+            
+            imprimeTabela();
+        }
+        function imprimeTabela(){
+            var conteudo = "<table border 1 class=imcTA>";
+            conteudo += "<tr>";
+            conteudo += "<th> Nome </th>";
+            conteudo += "<th> Peso </th>";
+            conteudo += "<th> Altura </th>";
+            conteudo += "<th> IMC </th>"
+            conteudo += "</tr>";
+            for (i=0; i<imcLista.length; i++){
+                conteudo += "<tr>";
+                conteudo += "<td>" + nomeLista[i] + "</td>";
+                conteudo += "<td>" + pesoLista[i] + "</td>";
+                conteudo += "<td>" + alturaLista[i] + "</td>";
+                conteudo += "<td>" + imcLista[i] + "</td>";
+                conteudo += "</tr>";      
+            }
+            
+            conteudo += "</table>"
+            document.getElementById("resultado").innerHTML = conteudo;
+        }
+       
+        
+        function maiorImc(){
+            var z = 0;
+            var x = "";
+            for (i=0; i<imcLista.length; i++){
+                
+                
+                if(imcLista[i]>z){
+                    z = imcLista[i];
+                    x = nomeLista[i];
+                }
+            }
+            alert("O maior IMC é do: " + x + " O valor do IMC é: " + z);
+        }
+        
+        
+    </script>
+
+<center>
+
+  <h1>Cadastro de Pacientes</h1>	
+  <table class="tabela">
+     <tr>
+       <td>Nome do paciente</td>
+       <td><input type="text" name="nome" id="nome" style="width: 350px;" />
+     </tr>
+     <tr>
+       <td>Peso</td>
+       <td><input type="text" name="peso" id="peso" />kg</td>
+     </tr>
+     <tr>
+       <td>Altura</td>
+       <td><input type="text" name="altura" id="altura" />m</td>
+     </tr>
+  </table>
+  <br/>
+  
+  <input type="button" class="botao" id="botAdicionar" onclick="adicionarFilme()" value="Adicionar"/>
+
+  <input type="button" class="botao" id="botImc" onclick="maiorImc()" value="Maior IMC"/>
+
+  <br/> <br/>
+  <div id="resultado"></div>
+</center>
+
+</body>
+
+</html>

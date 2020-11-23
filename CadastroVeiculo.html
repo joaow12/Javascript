@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+  <script type="text/javascript">
+      
+      var nomeLista=[];
+      var anoLista=[];
+      var precoLista=[];
+         
+      function adicionarCarro(){
+          
+          var x = document.getElementById("veiculo");
+          var y = document.getElementById("ano");
+          var z = document.getElementById("preco");
+          
+          if(x.value == ""){
+              alert("Digite um nome");
+              document.getElementById("mensagem").innerHTML = ""
+              return;
+          }
+          else{
+              if(y.value == ""){
+                  alert("Digite o ano do veiculo");
+                  document.getElementById("mensagem").innerHTML = ""
+                  return;
+              }
+              else{
+                  if(z.value == ""){
+                      alert("Digite o preço do veiculo");
+                      document.getElementById("mensagem").innerHTML = ""
+                      return;
+                  }
+              }
+          }
+          
+          document.getElementById("mensagem").innerHTML = "Veiculo cadastro com sucesso!"
+          
+          nomeLista.push(x.value);
+          anoLista.push(y.value);
+          precoLista.push(parseFloat(z.value));
+          
+          x.value = "";
+          y.value = "";
+          z.value = "";
+          
+          imprimeTabela();
+      }
+      
+      function pesquisarCarro(){
+          
+          var x = document.getElementById("min");
+          var y = document.getElementById("max");
+          
+          if(x.value == ""){
+              alert("Digite um valor minimo");
+              return;
+          }
+          else{
+              if(y.value == ""){
+                  alert("Digite um valor maximo");
+                  return;
+              }
+          }
+          
+          parseFloat(x.value);
+          parseFloat(y.value);
+          
+          var conteudo = "<table border 1 class=tabela>";
+            conteudo += "<tr>";
+            conteudo += "<th> Nome </th>";
+            conteudo += "<th> Ano </th>";
+            conteudo += "<th> Preço </th>";
+            conteudo += "</tr>";
+          for(i=0; i<nomeLista.length; i++){
+              if(precoLista[i]>=(x.value) && precoLista[i]<=(y.value)){
+                conteudo += "<tr>";
+                conteudo += "<td>" + nomeLista[i] + "</td>";
+                conteudo += "<td>" + anoLista[i] + "</td>";
+                conteudo += "<td>" + precoLista[i] + "</td>";
+                conteudo += "</tr>"; 
+                  
+              }
+          }
+          
+          conteudo += "</table>"
+          document.getElementById("resultado").innerHTML = conteudo;
+          
+          
+          
+      }
+      
+      function imprimeTabela(){
+          
+          var conteudo = "<table border 1 class=tabela>";
+          
+            conteudo += "<tr>";
+            conteudo += "<th> Nome </th>";
+            conteudo += "<th> Ano </th>";
+            conteudo += "<th> Preço </th>";
+            conteudo += "</tr>";
+          for (i=0; i<nomeLista.length; i++){
+                conteudo += "<tr>";
+                conteudo += "<td>" + nomeLista[i] + "</td>";
+                conteudo += "<td>" + anoLista[i] + "</td>";
+                conteudo += "<td>" + precoLista[i] + "</td>";
+                conteudo += "</tr>";      
+            }
+                      
+            conteudo += "</table>"
+            document.getElementById("resultado").innerHTML = conteudo;
+          document.getElementById("total").innerHTML = nomeLista.length;
+      }
+  
+  </script>
+  
+  <style>
+    
+    .tabela {
+    	background-color: DarkRed; 
+		color: white;
+        width: 500px;
+        border: 2px solid #red;
+		padding: 5px;
+    }
+    
+    .botao {
+    	width: 150px;
+        background-color: #CCCCCC;
+    }
+	
+	h1 {
+		color: blue;
+	}
+	
+	#mensagem {
+		color: red;
+	}
+  
+  </style>
+
+</head>
+
+<body>
+
+<center>
+
+  <h1>Cadastro de Venda de Veículos</h1>	
+  <h3>Total de veículos na base dados: <span id="total"></span></h3>
+  <div id="mensagem"></div>
+  <table class="tabela">
+     <tr>
+       <td>Marca e Modelo</td>
+       <td><input type="text" name="veiculo" id="veiculo" style="width: 350px;" />
+     </tr>
+     <tr>
+       <td>Ano</td>
+       <td><input type="text" name="ano" id="ano" /></td>
+     </tr>
+     <tr>
+       <td>Preço</td>
+       <td>R$ <input type="text" name="preco" id="preco" /></td>
+     </tr>
+  </table>
+  <br/>
+  
+  <input type="button" class="botao" id="botAdicionar" onclick="adicionarCarro()" value="Adicionar"/>
+
+  <br/> <br/>
+  
+  <table class="tabela">
+	<tr>
+		<td>Faixa de Preços</td>
+		<td>de<input type="text" name="min" id="min" size="8"/></td>
+		<td>até<input type="text" name="max" id="max" size="8"/></td>
+		<td><input type="button" name="botPesquisar" id="botPesquisar" onclick="pesquisarCarro()" value="Pesquisar"/></td>
+	<tr>
+  </table>
+
+  <br/> <br/>
+
+  <div id="resultado"></div>
+</center>
+
+</body>
+
+</html>

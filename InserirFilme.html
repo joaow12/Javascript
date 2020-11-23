@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Exercicio 1</title>
+        <meta charset="utf-8">
+        <style>
+            .filmesTA tr:nth-child(even) {background: #cdd0cd};
+            .cab{
+                background-color: green;
+            }
+            .red{
+                background-color: green;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var filmes = [];
+            function adicionar(){
+                var x = document.getElementById("nome").value;
+                if (x != ""){
+                    filmes.push(x);
+                }
+                else{
+                    alert("Digite um nome de filme");
+                }
+                imprimeTabela();
+            }
+            function imprimeTabela(){
+                var conteudo = "<table border 1 class=filmesTA>";
+                conteudo += "<tr>";
+                conteudo += "<th class='red'> Posição </th>";
+                conteudo += "<th class='red'> Filme </th>";
+                conteudo += "</tr>";
+                for (i=0; i<filmes.length; i++){
+                    conteudo += "<tr>";
+                    conteudo += "<td>" + i + "</td>";
+                    conteudo += "<td>" + filmes[i] + "</td>";
+                    conteudo += "</tr>";      
+                }
+                
+                conteudo += "</table>"
+                
+                document.getElementById("resultado").innerHTML = conteudo;
+            }
+            function ordenarTabela(){
+                filmes.sort();
+                
+                imprimeTabela();
+            }
+            function removerFilme(){
+                var z = document.getElementById("nome").value;
+                filmes.splice(z, 1);
+                
+                imprimeTabela();
+            }
+            
+        </script>
+           <p>Digite o nome do filme para inserir, ou digite a posição do filme para deletar</p>
+        <input type="text" id="nome" />
+            <input type="button" id="botao" onclick="adicionar()" value="Gravar">
+            <input type="button" id="botao" onclick="ordenarTabela()" value="Ordenar">
+            <input type="button" id="botao" onclick="removerFilme()" value="Remover Item">
+        <p id="resultado" />
+    </body>
+</html>

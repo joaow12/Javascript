@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Exercicio 1</title>
+        <meta charset="utf-8">
+        <style>
+            #campo1{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                float: left;
+            }
+            #campo2{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                float: left;
+            }
+            #campo3{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            window.onload = function(){
+                var btn = document.getElementById("campo1");
+                btn.addEventListener("click", minhafunc);
+                
+                var btn = document.getElementById("campo2");
+                btn.addEventListener("click", minhafunc2);
+                
+                var btn = document.getElementById("campo3");
+                btn.addEventListener("click", minhafunc3);
+            }
+            function minhafunc(){
+                
+                campo1.style.backgroundColor = "green";
+                
+            campo2.style.backgroundColor = "FFF";
+            campo3.style.backgroundColor = "FFF";
+            }
+            
+            function minhafunc2(){
+                
+                campo2.style.backgroundColor = "yellow";
+                
+                campo1.style.backgroundColor = "FFF";
+            campo3.style.backgroundColor = "FFF";
+            }
+            
+            function minhafunc3(){
+                
+                campo3.style.backgroundColor = "red";
+                
+                campo1.style.backgroundColor = "FFF";
+            campo2.style.backgroundColor = "FFF";
+            }
+        </script>
+        <div id="campo1">
+            <p>VERDE</p>
+        </div>
+        <div id="campo2">
+            <p>AMARELO</p>
+        </div>
+        <div id="campo3">
+            <p>VERMELHO</p>
+        </div>
+    </body>
+</html>

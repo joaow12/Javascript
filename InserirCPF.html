@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        var frutas = [];
+
+        window.onload = function () {
+            var btn = document.getElementById("botao");
+            btn.addEventListener("click", minhafunc);
+        }
+
+        function minhafunc() {
+            var campoTexto = document.getElementById("campo").value;
+            
+            var cpf = campoTexto.substring(9, 11);
+            
+            var dois = parseInt(cpf);
+            
+            if(dois%2 == 0){
+                document.getElementById("resultado").innerHTML = "Os ultimos 2 números do CPF são: " + cpf + "<br>" + "É um número par";   
+            }
+            else{
+                document.getElementById("resultado").innerHTML = "Os ultimos 2 números do CPF são: " + cpf + "<br>" + "É um número impar";
+            }
+            
+           
+        }
+
+
+    
+
+    </script>
+    <p>Digite um CPF: </p>
+    <input type="text" id="campo" maxlength="11"/>
+    <br />
+    <br />
+    <input type="button" id="botao" value="Go!" />
+
+    <br />
+    <br />
+    <p id="resultado"></p>
+
+</body>
+</html>
